@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivani Baddi — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1e3a2f;
+    --green-dark: #152a22;
+    --green-mid: #2c5040;
+    --pink: #e8c4c4;
+    --pink-light: #f2dada;
+    --pink-pale: #faf0f0;
+    --cream: #f5ede0;
+    --text-main: #e8c4c4;
+    --text-muted: #a89090;
+    --accent: #d4a0a0;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--green);
+    color: var(--text-main);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: rgba(21,42,34,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(232,196,196,0.1);
+  }
+
+  nav .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--pink);
+    letter-spacing: 0.02em;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  nav ul li a:hover { color: var(--pink); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%; right: -10%;
+    width: 60%;
+    height: 120%;
+    background: var(--green-mid);
+    clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+    z-index: 0;
+  }
+
+  .hero-text { position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--pink-light);
+    margin-bottom: 0.3rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--pink);
+    display: block;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-top: 2rem;
+    max-width: 420px;
+  }
+
+  .hero-tagline strong {
+    color: var(--pink);
+    font-weight: 500;
+  }
+
+  .hero-cta {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--pink);
+    color: var(--green-dark);
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--pink-light);
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--text-muted);
+    padding-bottom: 2px;
+    transition: all 0.3s;
+  }
+
+  .btn-ghost:hover { color: var(--pink); border-color: var(--pink); }
+
+  /* HERO IMAGE SIDE */
+  .hero-visual {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.5rem;
+  }
+
+  .hero-photo-frame {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 3/4;
+    background: var(--green-mid);
+    border: 1px solid rgba(232,196,196,0.2);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .photo-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .photo-placeholder svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.4;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    width: 100%;
+    max-width: 400px;
+    background: rgba(232,196,196,0.1);
+  }
+
+  .stat-box {
+    background: var(--green-dark);
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--pink);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  /* SECTION COMMON */
+  section {
+    padding: 7rem 4rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .section-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: var(--pink-light);
+    line-height: 1.1;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .section-divider {
+    flex: 1;
+    height: 1px;
+    background: rgba(232,196,196,0.15);
+    margin-bottom: 0.5rem;
+    align-self: center;
+  }
+
+  /* ABOUT */
+  .about { background: var(--green-dark); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--green-mid);
+    border: 1px solid rgba(232,196,196,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .about-photo::after {
+    content: 'PHOTO';
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: var(--text-muted);
+  }
+
+  .photo-tag {
+    position: absolute;
+    bottom: -1px;
+    left: -1px;
+    background: var(--pink);
+    color: var(--green-dark);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.8rem;
+    font-weight: 500;
+  }
+
+  .about-content { display: flex; flex-direction: column; gap: 2rem; }
+
+  .about-intro {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--pink-light);
+    line-height: 1.5;
+  }
+
+  .about-body {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+  }
+
+  .highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(232,196,196,0.1);
+    margin-top: 1rem;
+  }
+
+  .highlight-item {
+    background: var(--green);
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .highlight-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--pink);
+    flex-shrink: 0;
+    margin-top: 0.45rem;
+  }
+
+  .highlight-item p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  .about-philosophy {
+    border-left: 2px solid var(--accent);
+    padding-left: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--pink);
+    line-height: 1.6;
+    margin-top: 1rem;
+  }
+
+  /* WORK */
+  .work-intro {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    max-width: 60ch;
+    margin-bottom: 4rem;
+  }
+
+  /* BRAND CATEGORY */
+  .brand-category {
+    margin-bottom: 5rem;
+  }
+
+  .category-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .category-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(232,196,196,0.1);
+  }
+
+  .brand-grid {
+    display: grid;
+    gap: 1px;
+    background: rgba(232,196,196,0.1);
+  }
+
+  .brand-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+  .brand-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+  .brand-card {
+    background: var(--green-dark);
+    padding: 2.5rem;
+    transition: background 0.3s;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .brand-card:hover { background: var(--green-mid); }
+
+  .brand-card::after {
+    content: '↗';
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1.2rem;
+    color: rgba(232,196,196,0.2);
+    transition: all 0.3s;
+  }
+
+  .brand-card:hover::after { color: var(--pink); transform: translate(2px, -2px); }
+
+  .brand-logo-placeholder {
+    width: 52px;
+    height: 52px;
+    background: var(--green-mid);
+    border: 1px solid rgba(232,196,196,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--pink-light);
+  }
+
+  .brand-desc {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    flex: 1;
+  }
+
+  .brand-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid rgba(232,196,196,0.2);
+    color: var(--text-muted);
+    padding: 0.3rem 0.7rem;
+  }
+
+  /* EXPERTISE */
+  .expertise { background: var(--green-dark); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: rgba(232,196,196,0.1);
+  }
+
+  .skill-card {
+    background: var(--green-dark);
+    padding: 2.5rem;
+    transition: background 0.3s;
+  }
+
+  .skill-card:hover { background: var(--green); }
+
+  .skill-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(232,196,196,0.12);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--pink);
+    margin-bottom: 1rem;
+  }
+
+  .skill-desc {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(232,196,196,0.1);
+  }
+
+  .contact-left {
+    background: var(--green-mid);
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  .contact-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3vw, 3.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--pink-light);
+  }
+
+  .contact-headline em {
+    font-style: italic;
+    color: var(--accent);
+    display: block;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: color 0.3s;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(232,196,196,0.1);
+  }
+
+  .contact-link:hover { color: var(--pink); }
+
+  .contact-link-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .contact-link-value {
+    font-size: 0.9rem;
+    color: var(--pink-light);
+  }
+
+  .contact-right {
+    background: var(--green-dark);
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .contact-right-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--pink);
+  }
+
+  .contact-right-body {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+  }
+
+  .resume-block {
+    margin-top: auto;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(232,196,196,0.1);
+  }
+
+  .resume-block a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--pink);
+    color: var(--green-dark);
+    text-decoration: none;
+    padding: 1rem 1.8rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+
+  .resume-block a:hover {
+    background: var(--pink-light);
+    transform: translateY(-2px);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 1px solid rgba(232,196,196,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.25s; }
+  .delay-3 { animation-delay: 0.4s; }
+  .delay-4 { animation-delay: 0.6s; }
+  .delay-5 { animation-delay: 0.8s; }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    nav ul { display: none; }
+    section { padding: 5rem 2rem; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 2rem 4rem; }
+    .hero::before { display: none; }
+    .hero-visual { align-items: center; }
+    .hero-photo-frame { max-width: 300px; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-photo { max-width: 300px; aspect-ratio: 1/1; }
+    .brand-grid.cols-2, .brand-grid.cols-3 { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-left, .contact-right { padding: 3rem 2rem; }
+    .highlights { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Shivani Baddi</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow fade-up">Brand Strategy & Marketing</div>
+    <h1 class="fade-up delay-1">
+      Shivani
+      <em>Baddi.</em>
+    </h1>
+    <p class="hero-tagline fade-up delay-2">
+      <strong>Equal parts strategist, storyteller, and problem-solver</strong> — with 5 years of guiding ideas from concept to execution and everything in between.
+    </p>
+    <div class="hero-cta fade-up delay-3">
+      <a href="#work" class="btn-primary">See My Work</a>
+      <a href="https://linkedin.com/in/shivani-baddi-45b670196" target="_blank" class="btn-ghost">LinkedIn ↗</a>
+    </div>
+  </div>
+
+  <div class="hero-visual fade-up delay-2">
+    <div class="hero-photo-frame">
+      <!-- Replace the div below with: <img src="YOUR_PHOTO.jpg" alt="Shivani Baddi"> -->
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="18" r="8" stroke="#a89090" stroke-width="1.5"/>
+          <path d="M8 40c0-8.837 7.163-16 16-16s16 7.163 16 16" stroke="#a89090" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Add your photo here
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-box">
+        <span class="stat-number">5+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-number">25+</span>
+        <span class="stat-label">Campaigns</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-number">10+</span>
+        <span class="stat-label">Brands</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-number">3</span>
+        <span class="stat-label">Agencies</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="section-header reveal">
+    <span class="section-num">01</span>
+    <h2 class="section-title">About <em>Me</em></h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="about-grid">
+    <div>
+      <div class="about-photo reveal">
+        <!-- Replace contents with: <img src="YOUR_PHOTO_2.jpg" alt="Shivani" style="width:100%;height:100%;object-fit:cover"> -->
+        <div class="photo-tag">Photo Placeholder</div>
+      </div>
+    </div>
+
+    <div class="about-content">
+      <p class="about-intro reveal">
+        25+ Integrated Campaigns. 10+ Brands. Countless Decks, Deadlines & Last-Minute Pivots.
+      </p>
+      <p class="about-body reveal">
+        Over the last 5 years, I've worked across 3 creative agencies helping brands navigate everything from integrated campaigns, movie marketing, partnerships, events, CSR storytelling to performance marketing.
+      </p>
+
+      <div class="highlights reveal">
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <p>Managed campaigns for brands including Schneider Electric, Amazon Prime Video, Amazon Smart Commerce, Swiggy & Snitch</p>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <p>Led cross-functional teams, managed stakeholder expectations, and kept moving timelines on track</p>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <p>Fast-tracked from intern to Senior Account Manager in 1 year</p>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-dot"></div>
+          <p>Top Novice 2021 · Founders Employee of the Year, 2022 & 2023</p>
+        </div>
+      </div>
+
+      <p class="about-body reveal">
+        I enjoy bringing clarity to chaos, turning complex briefs into actionable plans, and helping brands tell stories that feel sharp, human, and culturally relevant. Outside of work, I value discipline, movement, and maintaining a life beyond deadlines — that perspective shapes how I work too.
+      </p>
+
+      <blockquote class="about-philosophy reveal">
+        "Big on ideas. Bigger on making them happen."
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Some of My <em>Work</em></h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <!-- FEATURED BRANDS -->
+  <div class="brand-category reveal">
+    <div class="category-label">Featured Campaigns</div>
+    <div class="brand-grid cols-2">
+
+      <a href="https://thinktreemedia.in/our-work/schneider-electric-x-rajasthan-royals/" target="_blank" class="brand-card">
+        <div class="brand-logo-placeholder">Logo</div>
+        <div class="brand-name">Schneider Electric</div>
+        <p class="brand-desc">Worked across 10 countries. Spanned the Green Yodha Campaign, IPL partnership with Rajasthan Royals, Elecrama, CSR film, and Innovation Yatra.</p>
+        <div class="brand-tags">
+          <span class="tag">Integrated Campaign</span>
+          <span class="tag">IPL Partnership</span>
+          <span class="tag">CSR</span>
+          <span class="tag">10 Countries</span>
+        </div>
+      </a>
+
+      <a href="#" class="brand-card">
+        <div class="brand-logo-placeholder">Logo</div>
+        <div class="brand-name">Amazon Prime</div>
+        <p class="brand-desc">Movie and show marketing (Maradona, Hotel Transylvania), meme seeding, on-ground activations, and influencer/celebrity marketing campaigns.</p>
+        <div class="brand-tags">
+          <span class="tag">Movie Marketing</span>
+          <span class="tag">Influencer</span>
+          <span class="tag">Activations</span>
+        </div>
+      </a>
+
+      <a href="https://thinktreemedia.in/our-work/swiggy/" target="_blank" class="brand-card">
+        <div class="brand-logo-placeholder">Logo</div>
+        <div class="brand-name">Swiggy Snacc & Handpicked</div>
+        <p class="brand-desc">Branding and positioning, launch campaign, product page UI/UX, social media sustenance, and product pivot strategy for both Handpicked (integration) and Snacc (standalone app).</p>
+        <div class="brand-tags">
+          <span class="tag">Brand Strategy</span>
+          <span class="tag">Launch Campaign</span>
+          <span class="tag">UI/UX</span>
+        </div>
+      </a>
+
+      <a href="#" class="brand-card">
+        <div class="brand-logo-placeholder">Logo</div>
+        <div class="brand-name">Amazon Smart Commerce</div>
+        <p class="brand-desc">Successfully onboarded 5000+ businesses onto the platform. Led storytelling from a SaaS perspective to communicate the product's value proposition.</p>
+        <div class="brand-tags">
+          <span class="tag">SaaS Marketing</span>
+          <span class="tag">5000+ Onboardings</span>
+          <span class="tag">Storytelling</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- YAAS -->
+  <div class="brand-category reveal">
+    <div class="category-label">YAAS — Current Role</div>
+    <div class="brand-grid cols-3">
+
+      <a href="https://www.instagram.com/vitamin.pop/" target="_blank" class="brand-card">
+        <div class="brand-logo-placeholder">Logo</div>
+        <div class="brand-name">Vodafone Idea<br><small style="font-size:0.75rem;font-style:italic;color:var(--text-muted)">Vitamin Pop</small></div>
+        <p class="brand-desc">Organic content strategy, community growth, and YouTube marketing for the entertainment & pop culture channel.</p>
+        <div class="brand-tags">
+          <span class="tag">Content Strategy</span>
+          <span class="tag">Community</span>
+        </div>
+      </a>
+
+      <a href="https://www.instagram.com/ecom.insiders/" target="_blank" class="brand-card">
+        <div class="brand-logo-placeholder">Logo</div>
+        <div class="brand-name">Shiprocket<br><small style="font-size:0.75rem;font-style:italic;color:var(--text-muted)">Ecom Insiders</small></div>
+        <p class="brand-desc">Organic content strategy and community growth for ecommerce-focused channel.</p>
+        <div class="brand-tags">
+          <span class="tag">Content Strategy</span>
+          <span class="tag">Ecom</span>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/@indeedindiaofficial" target="_blank" class="brand-card">
+        <div class="brand-logo-placeholder">Logo</div>
+        <div class="brand-name">Indeed India</div>
+        <p class="brand-desc">YouTube marketing strategy to grow Indeed India's presence on the platform.</p>
+        <div class="brand-tags">
+          <span class="tag">YouTube</span>
+          <span class="tag">Growth</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- OTHER CAMPAIGNS -->
+  <div class="brand-category reveal">
+    <div class="category-label">Other Campaigns</div>
+    <div class="brand-grid cols-3">
+
+      <a href="https://thinktreemedia.in/our-work/snitch/" target="_blank" class="brand-card">
+        <div class="brand-logo-placeholder">Logo</div>
+        <div class="brand-name">Snitch</div>
+        <p class="brand-desc">Raksha Bandhan Campaign — introduced the idea of marketing their products directly to women.</p>
+        <div class="brand-tags"><span class="tag">Campaign</span><span class="tag">Reframe</span></div>
+      </a>
+
+      <a href="https://thinktreemedia.in/our-work/cava/" target="_blank" class="brand-card">
+        <div class="brand-logo-placeholder">Logo</div>
+        <div class="brand-name">Cava Athleisure</div>
+        <p class="brand-desc">Grey Area Campaign — ideated and executed a product launch shoot.</p>
+        <div class="brand-tags"><span class="tag">Product Launch</span><span class="tag">Shoot</span></div>
+      </a>
+
+      <a href="https://thinktreemedia.in/our-work/dkms/" target="_blank" class="brand-card">
+        <div class="brand-logo-placeholder">Logo</div>
+        <div class="brand-name">DKMS-BMST</div>
+        <p class="brand-desc">Helped drive 15,000+ donor registrations through impactful CSR storytelling and campaign strategy.</p>
+        <div class="brand-tags"><span class="tag">CSR</span><span class="tag">15K+ Registrations</span></div>
+      </a>
+
+      <a href="https://thinktreemedia.in/our-work/corner-house/" target="_blank" class="brand-card">
+        <div class="brand-logo-placeholder">Logo</div>
+        <div class="brand-name">Corner House</div>
+        <p class="brand-desc">Grew social media following from 20K to 100K through consistent content and community building.</p>
+        <div class="brand-tags"><span class="tag">Social Media</span><span class="tag">20K → 100K</span></div>
+      </a>
+
+      <a href="https://thinktreemedia.in/our-work/nsrcel/" target="_blank" class="brand-card">
+        <div class="brand-logo-placeholder">Logo</div>
+        <div class="brand-name">IIMB NSRCEL</div>
+        <p class="brand-desc">Worked on the Goldman Sachs 10,000 Women Program for the IIM Bangalore startup incubator.</p>
+        <div class="brand-tags"><span class="tag">Education</span><span class="tag">Goldman Sachs 10K</span></div>
+      </a>
+
+      <a href="https://www.instagram.com/moonwalkr_cricket/" target="_blank" class="brand-card">
+        <div class="brand-logo-placeholder">Logo</div>
+        <div class="brand-name">Moonwalkr Cricket</div>
+        <p class="brand-desc">Freelance social media management, building the brand's digital presence in the cricket equipment space.</p>
+        <div class="brand-tags"><span class="tag">Freelance</span><span class="tag">Social Media</span></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise" class="expertise">
+  <div class="section-header reveal">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Areas of <em>Expertise</em></h2>
+    <div class="section-divider"></div>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-number">01</div>
+      <div class="skill-title">Brand & Campaign Management</div>
+      <p class="skill-desc">Big ideas are easy. Getting them approved, produced, launched, and delivered on time is the real skill.</p>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-number">02</div>
+      <div class="skill-title">Partnerships & Activations</div>
+      <p class="skill-desc">Matching brands with the right people, platforms, and opportunities — not just whoever happens to be trending that week.</p>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-number">03</div>
+      <div class="skill-title">Client & Stakeholder Management</div>
+      <p class="skill-desc">Translating between clients, creatives, leadership teams, and reality. Fluent in all four.</p>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-number">04</div>
+      <div class="skill-title">Content & Digital Strategy</div>
+      <p class="skill-desc">Finding the sweet spot between what the brand wants to say and what audiences actually care about.</p>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-number">05</div>
+      <div class="skill-title">Team Leadership</div>
+      <p class="skill-desc">Keeping the wheels turning without anyone noticing how much coordination it took.</p>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-number">06</div>
+      <div class="skill-title">Languages</div>
+      <p class="skill-desc">Proficient in Hindi, English, and Kannada — because great communication starts with speaking the right language.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding: 0;">
+  <div class="contact-grid">
+    <div class="contact-left reveal">
+      <div>
+        <h2 class="contact-headline">
+          Let's Build
+          <em>Something</em>
+          <em>Together.</em>
+        </h2>
+      </div>
+
+      <div class="contact-links">
+        <div>
+          <span class="contact-link-label">Email</span>
+          <a href="mailto:shivani.baddi@gmail.com" class="contact-link">
+            <span class="contact-link-value">shivani.baddi@gmail.com</span>
+          </a>
+        </div>
+        <div>
+          <span class="contact-link-label">Phone</span>
+          <a href="tel:9108295559" class="contact-link">
+            <span class="contact-link-value">+91 910 829 5559</span>
+          </a>
+        </div>
+        <div>
+          <span class="contact-link-label">LinkedIn</span>
+          <a href="https://linkedin.com/in/shivani-baddi-45b670196" target="_blank" class="contact-link">
+            <span class="contact-link-value">linkedin.com/in/shivani-baddi</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-right reveal">
+      <h3 class="contact-right-title">Still learning, still curious, always building better.</h3>
+      <p class="contact-right-body">
+        Whether you're looking for someone to lead campaigns, bring strategy to a growing brand, or just have a conversation about what's possible — I'd love to connect.
+      </p>
+      <p class="contact-right-body" style="margin-top: 1rem;">
+        I bring clarity to chaos, a sharp eye for what works, and the follow-through to see it land.
+      </p>
+
+      <div class="resume-block">
+        <a href="https://drive.google.com/file/d/1UgT4f6JBGrSJOC7tTLHEl1Kvh39-u8a9/view?usp=sharing" target="_blank">
+          Download Resume ↓
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Shivani Baddi. All rights reserved.</p>
+  <p>Bangalore, India</p>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
